@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using System;
 
@@ -8,7 +9,8 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            //Veritabani bağli verilerimiz yok, veri çekerek ya da oluşturduğumuzda düzenleyeceğiz.
+            CarManager carManager = new CarManager(new EfCarDal());
 
             foreach (var car in carManager.GetAll())
             {
@@ -16,7 +18,7 @@ namespace ConsoleUI
                     + car.ModelYear, "Kiralama Fiyatı: " + car.DailyPrice);
             }
 
-            
+
 
         }
     }
